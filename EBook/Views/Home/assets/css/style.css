@@ -43,8 +43,8 @@ h6 {
   bottom: 15px;
   z-index: 996;
   background: #e96b56;
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   border-radius: 4px;
   transition: all 0.4s;
 }
