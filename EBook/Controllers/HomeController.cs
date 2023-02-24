@@ -15,6 +15,7 @@ namespace EBook.Controllers
 
         public IActionResult Index()
         {
+            Console.WriteLine("TEst stirnng");
             return View();
         }
         public IActionResult About()
