@@ -65,25 +65,25 @@
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
-
+      <!-- navbar -->
       <nav id="navbar" class="navbar">
         <ul>       
           <li class="nav-item">
-          <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
           </li>
-           <li class="nav-item">
-          <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+          <li class="nav-item">
+             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
           </li>
-          <li><a href="services.html">Services</a></li>
-          @*<li><a href="portfolio.html">Portfolio</a></li>*@
-          @*<li><a href="team.html">Team</a></li>*@
-          @*<li><a href="pricing.html">Pricing</a></li>*@
-          <li><a href="blog.html">Blog</a></li>  
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Log In</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Forum">Forum</a>
+           </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Log In</a>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      </nav>
+      <!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
@@ -163,7 +163,7 @@
             <div class="icon-box">
               <i class="bi bi-bar-chart"></i>
               <h3><a href="">Stocuri</a></h3>
-              <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              <p>Cele mai mare stocuri de EBook un catalog emens dupa toate categoriele </p>
             </div>
           </div>
           <div class="col-lg-4 mt-4 mt-lg-0">
@@ -208,7 +208,8 @@
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section>
+    <!-- End About Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
@@ -216,35 +217,19 @@
 
        <div class="row">
 
-          @*<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4><a href="">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div>*@
-
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4><a href="">Categorii</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <p>Filtrare dupa categoria dorita avem o baza foarte mare de tot eu HZ  </p>
             </div>
           </div>
-
-          @*<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4><a href="">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div>*@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-world"></i></div>
               <h4><a href="">Accesare worldwide</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <p>Acesul din orice colt al lumi si o biblioteca personala</p>
             </div>
           </div>
 
@@ -252,30 +237,23 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-slideshow"></i></div>
               <h4><a href="">Disponibilitatea cărților audio</a></h4>
-              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+              <p>Posibiletatea dea converta cartile electronice in audio</p>
             </div>
           </div>
-
-          @*<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-arch"></i></div>
-              <h4><a href="">Divera don</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-            </div>
-          </div>*@
 
         </div>
 
       </div>
-    </section><!-- End Services Section -->
+    </section>
+    <!-- End Services Section -->
 
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
       <div class="container">
 
         <div class="section-title">
-          <h2>Clients</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>Clienti</h2>
+          <p>Clienti cu care lucram pana la momentul dat</p>
         </div>
 
         <div class="clients-slider swiper">
@@ -294,9 +272,11 @@
         </div>
 
       </div>
-    </section><!-- End Clients Section -->
+    </section>
+    <!-- End Clients Section -->
 
-  </main><!-- End #main -->
+  </main>
+  <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -344,13 +324,13 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h4>Contact Us</h4>
+            <h4>Contactele noastre</h4>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
+              str Studentilor 1 <br>
+              Chisinau, sec Rascani <br>
               United States <br><br>
-              <strong>Phone:</strong> +373 078000001<br>
-              <strong>Email:</strong> E_Book@gmail.com<br>
+              <strong>Tel :</strong> +373 078000001<br>
+              <strong>Email :</strong> E_Book@gmail.com<br>
             </p>
 
           </div>

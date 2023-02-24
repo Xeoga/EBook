@@ -15,7 +15,6 @@ namespace EBook.Controllers
 
         public IActionResult Index()
         {
-            Console.WriteLine("TEst stirnng");
             return View();
         }
         public IActionResult About()
@@ -23,42 +22,12 @@ namespace EBook.Controllers
             return View();
         }
 
-        public IActionResult Blog()
+        public IActionResult Forum()
         {
             return View();
         }
 
-        public IActionResult Blog_single()
-        {
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            return View();
-        }
-
-        public IActionResult Portfolio()
-        {
-            return View();
-        }
-
-        public IActionResult Portfolio_details()
-        {
-            return View();
-        }
-
-        public IActionResult Pricing()
-        {
-            return View();
-        }
-
-        public IActionResult Services()
-        {
-            return View();
-        }
-
-        public IActionResult Team()
+        public IActionResult Login()
         {
             return View();
         }
