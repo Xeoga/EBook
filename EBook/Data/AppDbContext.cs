@@ -22,5 +22,13 @@ namespace EBook.Data
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public DbSet<Author> Author { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Author_Book> Author_Book { get; set; }
+        public DbSet<PublishingHouse> PublishingHouse { get; set; }
+
+
+
     }
 }
