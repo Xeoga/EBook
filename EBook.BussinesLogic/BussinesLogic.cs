@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EBook.BussinesLogic
 {
-    internal class BussinesLogic
+    public class BussinesLogic
     {
         public ISession GetSessionBL()
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EBook.BussinesLogic
 {
-    public class SessionBl : UserApi, ISession
+    public class SessionBL : UserApi, ISession
     {
 
     }

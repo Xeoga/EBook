@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EBook.BussinesLogic.Interfaces
 {
-    internal class ISession
+    public interface ISession
     {
     }
 }

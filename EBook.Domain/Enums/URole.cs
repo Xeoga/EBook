@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BussinesLayer.Services
+namespace EBook.Domain.Enums
 {
-    internal class add_book
+    internal class URole
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EBook.BussinesLogic.Core
 {
-    internal class AdminApi
+    public class AdminApi
     {
     }
 }
