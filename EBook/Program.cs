@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using EBook.Domain;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//DB
+var connectionString = builder.Configuration.GetConnectionString("DbConnection");
+builder.Services.AddDbContext<EBookAppContext>(options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
