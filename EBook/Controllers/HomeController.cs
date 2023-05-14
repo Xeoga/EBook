@@ -1,4 +1,5 @@
-﻿using EBook.Models;
+﻿using EBook.Domain.Entities;
+using EBook.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,17 +8,19 @@ namespace EBook.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        //Primim datele din appsettings.jshon
+        private readonly IConfiguration Configuration;
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _logger = logger;
+            Configuration = configuration;
         }
 
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult About()
+        public IActionResult Create()
         {
             return View();
         }
@@ -29,6 +32,8 @@ namespace EBook.Controllers
 
         public IActionResult Login()
         {
+            // In felul dat primim numele la admin
+            var adminName = Configuration.GetSection("Admin:Name");
             return View();
         }
 

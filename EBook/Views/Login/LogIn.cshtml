@@ -1,0 +1,31 @@
+﻿    
+@{
+    ViewData["Title"] = "LogIn";
+}
+
+<html lang="en">
+  <head>
+    <title>Login</title>
+    <link href="~/assets/css/loginStyle.css" rel="stylesheet" />
+        <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="login-box">
+      <h1>Login</h1>
+      <form>
+        <label>Email</label>
+        <input type="email" placeholder="" />
+        <label>Password</label>
+        <input type="password" placeholder="" />
+        <input type="button" value="Submit" />
+      <closeform></closeform></form>
+    </div>
+    <p class="para-2">
+      Not have an account?<a asp-area="" asp-controller="Login" asp-action="SingUp">Sign Up Here</a>
+    </p>
+  </body>
+</html>
+

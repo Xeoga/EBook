@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Home\assets\css\login_style.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\assets\css\style.css" />
     <None Include="wwwroot\assets\img\about.jpg" />
     <None Include="wwwroot\assets\img\apple-touch-icon.png" />
@@ -140,13 +144,17 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.12" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BussinesLayer\EBook.BusinessLogic.csproj" />
     <ProjectReference Include="..\EBook.BussinesLogic\EBook.BussinesLogic.csproj" />
     <ProjectReference Include="..\EBook.Domain\EBook.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Login\CSS\" />
   </ItemGroup>
 
 </Project>
