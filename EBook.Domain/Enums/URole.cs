@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace EBook.Domain.Enums
 {
-    internal class URole
+    public enum URole
     {
+        User,
+        Moderator,
+        Admin
     }
 }
