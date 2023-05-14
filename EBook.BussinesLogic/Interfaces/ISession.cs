@@ -8,5 +8,6 @@ namespace EBook.BussinesLogic.Interfaces
 {
     public interface ISession
     {
+
     }
 }
