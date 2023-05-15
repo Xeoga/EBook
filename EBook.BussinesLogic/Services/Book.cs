@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EBook.Domain.Enums
+namespace EBook.BussinesLogic.Services
 {
-    public enum URole
+    internal class Book
     {
-        user = 0,
-        Admin = 1
     }
 }

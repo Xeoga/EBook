@@ -5,7 +5,7 @@ namespace EBook.Controllers
 {
     public class BookController : Controller
     {
-        public IActionResult Create()
+        public IActionResult Add()
         {
             return View();
         }

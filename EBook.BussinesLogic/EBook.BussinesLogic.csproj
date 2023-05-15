@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\Book.cs" />
+    <Compile Remove="Services\IBook.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EBook.Domain\EBook.Domain.csproj" />
     <ProjectReference Include="..\EBook.Helpers\EBook.Helpers.csproj" />
   </ItemGroup>

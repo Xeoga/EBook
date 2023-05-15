@@ -13,10 +13,12 @@ namespace EBook.Domain.Entities.User
         [Key]
         public int Id { get; set; }
         public string Credential { get; set; }
+        [Required(ErrorMessage ="Entre password:")]
+        [MinLength(7,ErrorMessage ="7")]
         public string Password { get; set; }
         public string LoginIp { get; set; }
-        public DateTime LoginDateTime { get; set; } 
-        public URole Level { get; set; }
+        public DateTime LoginDateTime { get; set; } = DateTime.Now;
+        public URole Level { get; set; } 
 
     }
 }

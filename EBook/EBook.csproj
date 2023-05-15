@@ -7,10 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\Home\assets\css\login_style.css" />
+    <Compile Remove="Views\Home\assets\**" />
+    <Compile Remove="Views\Home\forms\**" />
+    <Compile Remove="Views\Login\CSS\**" />
+    <Content Remove="Views\Home\assets\**" />
+    <Content Remove="Views\Home\forms\**" />
+    <Content Remove="Views\Login\CSS\**" />
+    <EmbeddedResource Remove="Views\Home\assets\**" />
+    <EmbeddedResource Remove="Views\Home\forms\**" />
+    <EmbeddedResource Remove="Views\Login\CSS\**" />
+    <None Remove="Views\Home\assets\**" />
+    <None Remove="Views\Home\forms\**" />
+    <None Remove="Views\Login\CSS\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\assets\css\loginStyle.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\css\loginStyle.css" />
     <None Include="wwwroot\assets\css\style.css" />
     <None Include="wwwroot\assets\img\about.jpg" />
     <None Include="wwwroot\assets\img\apple-touch-icon.png" />
@@ -151,10 +167,6 @@
     <ProjectReference Include="..\BussinesLayer\EBook.BusinessLogic.csproj" />
     <ProjectReference Include="..\EBook.BussinesLogic\EBook.BussinesLogic.csproj" />
     <ProjectReference Include="..\EBook.Domain\EBook.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Login\CSS\" />
   </ItemGroup>
 
 </Project>

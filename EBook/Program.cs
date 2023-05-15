@@ -1,10 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using EBook.Domain;
+using EBook.BussinesLogic.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IBookService, BookService>();
 
 //DB
 var connectionString = builder.Configuration.GetConnectionString("DbConnection");
