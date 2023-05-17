@@ -12,12 +12,15 @@ namespace EBook.Domain.Entities
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Book Name")]
         public string Name { get; set; }
+        [Display(Name = "Descriptions")]
         public string Descriptions { get; set; }
         public double Price { get; set; }
         public string Authors { get; set; }
         public int NrPage { get; set; }
         public DateTime DatePublishing { get; set; } = DateTime.Now;
+        [Display(Name="Book Picture")]
         public string URL { get; set; }
         public Categorie BookCategorie { get; set; }
 

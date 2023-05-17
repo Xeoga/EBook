@@ -169,4 +169,8 @@
     <ProjectReference Include="..\EBook.Domain\EBook.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Categorie\" />
+  </ItemGroup>
+
 </Project>

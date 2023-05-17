@@ -10,5 +10,6 @@ namespace EBook.BussinesLogic.Services
     public interface IBookService
     {
         Task Add(Book book);
+        Task<IEnumerable<Book>> GetAll();
     }
 }

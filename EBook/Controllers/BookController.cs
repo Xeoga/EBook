@@ -29,6 +29,10 @@ namespace EBook.Controllers
             }
             return View();
         }
+        public IActionResult AddCategorie()
+        {
+            return View();
+        }
 
     }
 }

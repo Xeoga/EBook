@@ -1,4 +1,5 @@
-﻿using EBook.Domain.Entities;
+﻿using EBook.BussinesLogic.Services;
+using EBook.Domain.Entities;
 using EBook.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -9,16 +10,19 @@ namespace EBook.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         //Primim datele din appsettings.jshon
-        private readonly IConfiguration Configuration;
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
+        //private readonly IConfiguration Configuration;
+        private readonly IBookService _service;
+        public HomeController(ILogger<HomeController> logger, IBookService service)
         {
+            _service = service;
             _logger = logger;
-            Configuration = configuration;
+            //Configuration = configuration;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var data = await _service.GetAll();
+            return View(data);
         }
         public IActionResult Create()
         {
@@ -30,12 +34,12 @@ namespace EBook.Controllers
             return View();
         }
 
-        public IActionResult Login()
-        {
+        //public IActionResult Login()
+        //{
             // In felul dat primim numele la admin
-            var adminName = Configuration.GetSection("Admin:Name");
-            return View();
-        }
+            //var adminName = Configuration.GetSection("Admin:Name");
+            //return View();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

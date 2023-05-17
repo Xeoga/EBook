@@ -1,5 +1,6 @@
 ﻿using EBook.Domain;
 using EBook.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,12 @@ namespace EBook.BussinesLogic.Services
             await _context.Books.AddAsync(book);
             await _context.SaveChangesAsync();
 
+        }
+
+        public async Task<IEnumerable<Book>> GetAll()
+        {
+            var data = await _context.Books.ToListAsync();
+            return data;
         }
     }
 }
