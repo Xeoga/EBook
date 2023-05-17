@@ -164,7 +164,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BussinesLayer\EBook.BusinessLogic.csproj" />
     <ProjectReference Include="..\EBook.BussinesLogic\EBook.BussinesLogic.csproj" />
     <ProjectReference Include="..\EBook.Domain\EBook.Domain.csproj" />
   </ItemGroup>
