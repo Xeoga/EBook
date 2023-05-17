@@ -3,13 +3,25 @@
 @{
     ViewData["Title"] = "SingUp";
 }
+<style>
+    .register{
+        text-align:center;
+    }
 
+    .confirm {
+        position: relative;
+        top: 10px;
+    }
+</style>
 
 <div class="row text">
     <div class="col-md-8 offset-2">
-        <p>
-            <h1>Register</h1>
-        </p>
+        <div class="register">
+            <p>
+                <h1>Register</h1>
+            </p>
+        </div>
+
         <div class="row">
             <div class="col-md-8 offset-2">
                 <form asp-action="SingUp">
@@ -31,9 +43,9 @@
                         <span asp-validation-for="LoginIp" class="text-danger"></span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="confirm">
                         <input type="submit" value="SingUp" class="btn btn-outline-success float-right" />
-                        <a class="btn btn-outline-secondary" asp-action="LogIn">Return to log page</a>
+                        <a class="btn btn-outline-secondary" asp-action="LogIn">Return to LogIn page</a>
                     </div>
                 </form>
             </div>
