@@ -11,8 +11,11 @@ namespace EBook.Domain.Entities
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Pic")]
         public string PictureURL { get; set; }
+        [Display(Name = "Author Name")]
         public string AuthorBio { get; set; }
+        [Display(Name = "Same data")]
         public string Data { get; set; }
 
         // Relationship
