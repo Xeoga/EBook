@@ -17,7 +17,7 @@ namespace EBook.Domain.Entities
         public double Price { get; set; }
         public string Authors { get; set; }
         public int NrPage { get; set; }
-        public DateTime DatePublishing { get; set; }
+        public DateTime DatePublishing { get; set; } = DateTime.Now;
         public string URL { get; set; }
         public Categorie BookCategorie { get; set; }
 
