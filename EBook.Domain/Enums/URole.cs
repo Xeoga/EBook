@@ -11,5 +11,6 @@ namespace EBook.Domain.Enums
     {
         user = 0,
         Admin = 1
+
     }
 }
