@@ -44,8 +44,11 @@
             </table>
         </div>
     </div>
-    <a asp-area="" asp-controller="Book" asp-action="Add">Add Book</a>
-    <a asp-area="" asp-controller="Book" asp-action="AddCategorie">Add Categori</a>
+
+    <div style="position: fixed; right: 25px; bottom: 65px;" class="text-white">
+        <a asp-controller="Book" asp-action="Add" class="btn btn-success"> <i class="bi bi-plus-circle"></i> Add Book </a>
+        <a asp-controller="Book" asp-action="AddCategorie" class="btn btn-success"> <i class="bi bi-plus-circle"></i> Add Categorie </a>
+    </div>
 </body>
 
 </html>

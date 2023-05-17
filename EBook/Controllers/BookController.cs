@@ -25,7 +25,8 @@ namespace EBook.Controllers
             if (ModelState.IsValid)
             {
                 await _service.Add(model);
-                return RedirectToAction(nameof(Index));
+                return View();
+                //return RedirectToAction(nameof(Index));
             }
             return View();
         }
