@@ -16,6 +16,12 @@ namespace EBook.BussinesLogic.Services
         {
             _context = context;
         }
+        public async Task AddAuthor(Author author)
+        {
+            await _context.Authors.AddAsync(author);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<Author>> GetAll()
         {
             var data = await _context.Authors.ToListAsync();

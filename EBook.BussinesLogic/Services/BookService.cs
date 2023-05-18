@@ -19,6 +19,8 @@ namespace EBook.BussinesLogic.Services
 
         public async Task Add(Book book)
         {
+            //Categorie category = GetCategorie(book.BookCategorie);
+            //book.BookCategorie = GetCategorie()
             await _context.Books.AddAsync(book);
             await _context.SaveChangesAsync();
 
@@ -29,5 +31,15 @@ namespace EBook.BussinesLogic.Services
             var data = await _context.Books.ToListAsync();
             return data;
         }
+
+        public Task GetCategorie(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public async Task GetCategorie(int id)
+        //{
+        //return await _context.Categories.FirstOrDefaultAsync(id);
+        //}
     }
 }

@@ -54,9 +54,15 @@
                         <span asp-validation-for="PublishingHouseId" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Add" class="btn btn-outline-success float-right" />
-                        <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+                        <label asp-for="BookCategorie" class="control-label"></label>
+                        <input asp-for="BookCategorie" class="form-control" />
+                        <span asp-validation-for="BookCategorie" class="text-danger"></span>
                     </div>
+                    <div class="form-group">
+                        <input type="submit" value="Add" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
+                    </div>
+
                 </form>
             </div>
         </div>

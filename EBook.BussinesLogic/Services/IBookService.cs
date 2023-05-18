@@ -11,5 +11,6 @@ namespace EBook.BussinesLogic.Services
     {
         Task Add(Book book);
         Task<IEnumerable<Book>> GetAll();
+        Task GetCategorie(int id);
     }
 }

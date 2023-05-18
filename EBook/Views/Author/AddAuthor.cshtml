@@ -1,0 +1,40 @@
+﻿@using EBook.Domain.Entities
+@model Author
+@{
+    ViewData["Title"] = "AddAuthor";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Add Author</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="AddAuthor">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="PictureURL" class="control-label"></label>
+                        <input asp-for="PictureURL" class="form-control" />
+                        <span asp-validation-for="PictureURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AuthorBio" class="control-label"></label>
+                        <input asp-for="AuthorBio" class="form-control" />
+                        <span asp-validation-for="AuthorBio" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Data" class="control-label"></label>
+                        <input asp-for="Data" class="form-control" />
+                        <span asp-validation-for="Data" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="AddAuthor" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="AIndex">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

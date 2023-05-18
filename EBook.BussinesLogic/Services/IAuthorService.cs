@@ -9,6 +9,8 @@ namespace EBook.BussinesLogic.Services
 {
     public interface IAuthorService
     {
+        Task AddAuthor(Author author);
         Task<IEnumerable<Author>> GetAll();
+        
     }
 }

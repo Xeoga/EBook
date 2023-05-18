@@ -22,13 +22,13 @@ namespace EBook.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(Book model)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 await _service.Add(model);
                 return View();
                 //return RedirectToAction(nameof(Index));
-            }
-            return View();
+            //}
+            //return View();
         }
         public IActionResult AddCategorie()
         {
