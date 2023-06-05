@@ -1,0 +1,51 @@
+﻿@using EBook.Domain.Entities;
+@model Author;
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="card mb-12">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-info">
+                        <p class="card-text">
+                            <h5 class="card-title">
+                                @Model.AuthorBio
+                            </h5>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="@Model.PictureURL" width="100%" alt="@Model.AuthorBio">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>Date: </b>
+                            <a>
+                                @Model.Data
+                            </a>
+                        </p>
+                        <p class="card-text">
+                            <b>Name: </b>
+                            <a>
+                                @Model.AuthorBio
+                            </a>
+                        </p>
+                        <p class="card-text">
+                            <b>Book: </b>
+                            <a>
+                                @Model.Author_Book
+                            </a>
+                        </p>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

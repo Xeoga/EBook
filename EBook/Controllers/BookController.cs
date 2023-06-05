@@ -30,6 +30,18 @@ namespace EBook.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var productDetail = await _service.GetById(id);
+            return View(productDetail);
+        }
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _service.Delete(id);
+            return RedirectToAction();
+        }
+
         public IActionResult AddCategorie()
         {
             return View();

@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace EBook.BussinesLogic.Services
 {
-    public interface IAuthorService
+    public interface ICategorieService
     {
-        Task AddAuthor(Author author);
-        Task<IEnumerable<Author>> GetAll();
-        Task<Author> GetById(int id);
-        Task Delete(int id);
+        Task<IEnumerable<Categorie>> GetAll();
     }
 }

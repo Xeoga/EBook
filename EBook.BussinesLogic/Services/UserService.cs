@@ -3,6 +3,7 @@ using EBook.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +19,15 @@ namespace EBook.BussinesLogic.Services
 
         public async Task Add(ULoginData user)
         {
-            await _context.User.AddAsync(user);
+            string hashPass = HashPassword(user.Password);
+            var newUser = new ULoginData()
+            {
+                Credential = user.Credential,
+                Password = hashPass,
+                LoginIp = user.LoginIp,
+            };
+
+            await _context.User.AddAsync(newUser);
             await _context.SaveChangesAsync();
         }
 
@@ -31,6 +40,15 @@ namespace EBook.BussinesLogic.Services
         {
             throw new NotImplementedException();
         }
+        private string HashPassword(string password)
+        {
+            SHA256 hash = SHA256.Create();
+            var passwordBytes = Encoding.Default.GetBytes(password);
+            var hashedPassword = hash.ComputeHash(passwordBytes);
+
+            return Convert.ToHexString(hashedPassword);
+        }
+
     }
 
 }

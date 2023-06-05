@@ -1,0 +1,63 @@
+﻿@using EBook.Domain.Entities;
+@model Book;
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="card mb-12">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-info">
+                        <p class="card-text">
+                            <h5 class="card-title">
+                                @Model.Name
+                            </h5>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="@Model.URL" width="100%" alt="@Model.Name">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>Description: </b>
+                            <a>
+                                @Model.Descriptions
+                            </a>
+                        </p>
+                        <p class="card-text">
+                            <b>Page: </b>
+                            <a>
+                                @Model.NrPage
+                            </a>
+                        </p>
+                        <p class="card-text">
+                            <b>Price: </b>
+                            <a>
+                                @Model.Price
+                            </a>
+                        </p>
+                        <p class="card-text">
+                            <b>Authors: </b>
+                            <a>
+                                @Model.Authors
+                            </a>
+                        </p>
+                        <p class="card-text">
+                            <b>Authors ID: </b>
+                            <a>
+                                @Model.AuthorId
+                            </a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

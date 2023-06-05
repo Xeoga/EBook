@@ -19,18 +19,17 @@ namespace EBook.Domain.Entities
         public double Price { get; set; }
         public string Authors { get; set; }
         public int NrPage { get; set; }
-        public DateTime DatePublishing { get; set; } = DateTime.Now;
-        [Display(Name="Book Picture")]
-        public string URL { get; set; }
-        public Categorie BookCategorie { get; set; }
-
-        //Relationships
-        public List<Author_Book> Author_Book { get; set; }
         //PublishingHouse 
         [ForeignKey("PublishingHouseID")]
         public int PublishingHouseId { get; set; }
+        public DateTime DatePublishing { get; set; } = DateTime.Now;
+        [Display(Name="Book Picture")]
+        public string URL { get; set; }
+        public Categorie? BookCategorie { get; set; }
 
-        public PublishingHouse PublishingHouse { get; set; }
+        //Relationships
+        public List<Author_Book>? Author_Book { get; set; }
+        public PublishingHouse? PublishingHouse { get; set; }
 
         [ForeignKey("AuthorId")]
         public int AuthorId { get; set; }

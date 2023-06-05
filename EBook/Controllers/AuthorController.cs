@@ -32,7 +32,17 @@ namespace EBook.Controllers
             var authors = await _service.GetAll();
             return View(authors);
         }
-      
+        public async Task<IActionResult> Details(int id)
+        {
+            var productDetail = await _service.GetById(id);
+            return View(productDetail);
+        }
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _service.Delete(id);
+            return RedirectToAction(nameof(AIndex));
+        }
+
     }
 }
 // https://i1.wp.com/lit216.pbworks.com/f/1403891708/frank-herbert.jpg

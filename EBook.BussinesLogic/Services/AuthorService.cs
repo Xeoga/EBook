@@ -27,5 +27,24 @@ namespace EBook.BussinesLogic.Services
             var data = await _context.Authors.ToListAsync();
             return data;
         }
+        public async Task<Author> GetById(int id)
+        {
+            var productDetails = await _context.Authors
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            return productDetails;
+        }
+        public async Task Delete(int id)
+        {
+            var product = await _context.Authors.FindAsync(id);
+            if (product != null)
+            {
+                var existingConnect = _context.Authors.Where(m => m.Id == id).ToList();
+                _context.Authors.RemoveRange(existingConnect);
+
+                _context.Authors.Remove(product);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

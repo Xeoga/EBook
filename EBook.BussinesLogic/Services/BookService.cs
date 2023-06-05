@@ -37,6 +37,28 @@ namespace EBook.BussinesLogic.Services
             throw new NotImplementedException();
         }
 
+        public async Task<Book> GetById(int id)
+        {
+            var productDetails = await _context.Books
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            return productDetails;
+        }
+        public async Task Delete(int id)
+        {
+            var product = await _context.Books.FindAsync(id);
+            if (product != null)
+            {
+                var existingConnect = _context.Books.Where(m => m.Id == id).ToList();
+                _context.Books.RemoveRange(existingConnect);
+
+                _context.Books.Remove(product);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+
+
         //public async Task GetCategorie(int id)
         //{
         //return await _context.Categories.FirstOrDefaultAsync(id);

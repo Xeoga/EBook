@@ -10,6 +10,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IPublishingHouse, PublishingHouseService>();
+builder.Services.AddScoped<ICategorieService, CategorieService>();
 
 //DB
 var connectionString = builder.Configuration.GetConnectionString("DbConnection");
