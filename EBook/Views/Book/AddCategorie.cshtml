@@ -12,7 +12,7 @@
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Categorie">
+                <form asp-action="AddCategorie">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="form-group">
@@ -21,18 +21,17 @@
                         <span asp-validation-for="NameCategorie" class="text-danger"></span>
                     </div>
                     <div class="form-group">
+                        <label asp-for="Logo" class="control-label">Logo</label>
+                        <input asp-for="Logo" class="form-control" />
+                        <span asp-validation-for="Logo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
                         <label asp-for="Description" class="control-label">Description</label>
                         <input asp-for="Description" class="form-control" />
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Logo" class="control-label">Name</label>
-                        <input asp-for="Logo" class="form-control" />
-                        <span asp-validation-for="Logo" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="submit" value="Add" class="btn btn-outline-success float-right" />
+                        <input type="submit" value="AddCategorie" class="btn btn-outline-success float-right" />
                         <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
                     </div>
                 </form>

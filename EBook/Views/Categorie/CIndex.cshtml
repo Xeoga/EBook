@@ -36,13 +36,19 @@
                                     @item.Description
                                 </a>
                             </p>
-                            <ul>
-                                @foreach (var book in item.Books)
-                                {
-                                    <li>@book.Name</li>
-                                }
-                            </ul>
-
+                            @if (item.Books != null && item.Books.Count > 0)
+                            {
+                                <ul>
+                                    @foreach (var book in item.Books)
+                                    {
+                                        <li>@book.Name</li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p>No books available</p>
+                            }
                         </div>
                     </div>
                 </div>

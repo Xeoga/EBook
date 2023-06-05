@@ -25,6 +25,11 @@ namespace EBook.BussinesLogic.Services
             await _context.SaveChangesAsync();
 
         }
+        public async Task AddCat(Categorie categorie)
+        {
+            await _context.Categories.AddAsync(categorie);
+            await _context.SaveChangesAsync();
+        }
 
         public async Task<IEnumerable<Book>> GetAll()
         {
@@ -56,8 +61,14 @@ namespace EBook.BussinesLogic.Services
                 await _context.SaveChangesAsync();
             }
         }
-
-
+        public List<Author> GetAllAuthors()
+        {
+            return _context.Authors.ToList();
+        }
+        public List<Categorie> GetCategories()
+        {
+            return _context.Categories.ToList();
+        }
 
         //public async Task GetCategorie(int id)
         //{

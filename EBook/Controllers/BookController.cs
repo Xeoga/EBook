@@ -3,6 +3,8 @@ using EBook.Domain.Entities;
 using EBook.Domain.Entities.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Plugins;
 
 namespace EBook.Controllers
@@ -17,17 +19,46 @@ namespace EBook.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            List<Author> authors = _service.GetAllAuthors();
+            ViewBag.Authors = authors.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.AuthorBio
+            }).ToList();
+            ViewBag.Categories = _service.GetCategories();
+
+            List<Categorie> categorie = _service.GetCategories();
+            ViewBag.Categories = categorie.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.NameCategorie
+            }).ToList();
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> Add(Book model)
         {
+
             if (ModelState.IsValid)
             {
                 await _service.Add(model);
                 //return View();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Home");
             }
+            // Inițializează ViewBag.Authors pentru a fi disponibil în view
+            List<Author> authors = _service.GetAllAuthors();
+            ViewBag.Authors = authors.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.AuthorBio
+            }).ToList();
+
+            List<Categorie> categorie = _service.GetCategories();
+            ViewBag.Categories = categorie.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.NameCategorie
+            }).ToList();
             return View();
         }
 
@@ -39,11 +70,19 @@ namespace EBook.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await _service.Delete(id);
-            return RedirectToAction();
+            return RedirectToAction("Index","Home");
         }
 
-        public IActionResult AddCategorie()
+        [HttpGet]
+        public IActionResult AddCategorie() => View();
+        [HttpPost]
+        public async Task<IActionResult> AddCategorie(Categorie model)
         {
+            if (ModelState.IsValid)
+            {
+                await _service.AddCat(model);
+                return RedirectToAction("CIndex","Categorie");
+            }
             return View();
         }
 

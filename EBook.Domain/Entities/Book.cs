@@ -21,7 +21,7 @@ namespace EBook.Domain.Entities
         public int NrPage { get; set; }
         //PublishingHouse 
         [ForeignKey("PublishingHouseID")]
-        public int PublishingHouseId { get; set; }
+        public int? PublishingHouseId { get; set; }
         public DateTime DatePublishing { get; set; } = DateTime.Now;
         [Display(Name="Book Picture")]
         public string URL { get; set; }
@@ -31,8 +31,11 @@ namespace EBook.Domain.Entities
         public List<Author_Book>? Author_Book { get; set; }
         public PublishingHouse? PublishingHouse { get; set; }
 
+
+
+
         [ForeignKey("AuthorId")]
-        public int AuthorId { get; set; }
+        public int? AuthorId { get; set; }
 
     }
 }

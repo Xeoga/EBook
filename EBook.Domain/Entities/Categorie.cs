@@ -13,6 +13,6 @@ namespace EBook.Domain.Entities
 
         // Relationship
 
-        public List<Book> Books { get; set; }
+        public List<Book>? Books { get; set; }
     }
 }
