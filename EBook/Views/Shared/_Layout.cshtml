@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿
+@using Microsoft.AspNetCore.Identity
+
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -30,20 +33,35 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Categorie" asp-action="CIndex">Categorie</a>
                         </li>
-                        <div class="form-group" style="display: flex; justify-content: flex-end;">
-                            <a class="btn btn-outline-success" asp-controller="Login" asp-action="LogIn">Login</a>
-                        </div>
+                        <div class="right-sidebar">
                         @{
-                            if (User.Identity.IsAuthenticated)
+                            // Obțineți valoarea cookie-ului "AuthCookie" (tokenul de autentificare)
+                            var userName = Context.User.Identity.Name;
+                            string authToken = Context.Request.Cookies["AuthCookie"];
+                            string username = Context.Request.Cookies["AuthCookie"];
+
+                            //parasa asta nu vrea sa lucreze => if (User.Identity.IsAuthenticated)
+                            // Verificați dacă tokenul este prezent și valabil
+                            if (!string.IsNullOrEmpty(authToken))
                             {
-                                <a>True</a>
+                            // Afișați conținutul pentru utilizatorul autentificat
+                            //Nu lucreaza nu  pot pune username HZ cum
+                                    <span>Bun venit, @ViewBag.name!</span>
+                                    //<span>Bun venit, @ViewData["name"]!</span>
+                                <a class="btn btn-primary" asp-controller="Cart" asp-action="Index">
+                                    <i class="bi bi-cart-fill me-2"></i>ShopingCart
+                                </a>
+                                <a class="btn btn-outline-success" asp-controller="Login" asp-action="Logout">Logout</a>
+                                
                             }
                             else
                             {
-                                // Afișați un mesaj de eroare sau un mesaj de încurajare pentru autentificare
-                                <a>True</a>
+                                // Afișați conținutul pentru utilizatorul neautentificat
+                                    <a class="btn btn-outline-success" asp-controller="Login" asp-action="LogIn">Login</a>
+                                    <a class="btn btn-outline-success" asp-controller="Login" asp-action="SingUp">Sign Up</a>
                             }
                         }
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -66,3 +84,10 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<style>
+    .right-sidebar {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+</style>

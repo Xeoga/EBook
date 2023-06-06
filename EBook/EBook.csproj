@@ -162,6 +162,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
   </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+	</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EBook.BussinesLogic\EBook.BussinesLogic.csproj" />

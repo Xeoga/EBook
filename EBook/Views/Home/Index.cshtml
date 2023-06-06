@@ -20,12 +20,18 @@
             position: relative;
             left: 3.5cm;
         }
+        .search-input{
+            width: 500px;
+            padding: 5px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
     </style>
 
     <form asp-controller="Home" asp-action="Index">
         <p>
             <div class="search-bar">
-                <div class="title">Title:</div> <input type="text" name="SearchString" style="width : 300px"/>
+                <div class="title">Title</div> <input type="text" name="SearchString" class="search-input" />
             </div>
         </p>
     </form>
@@ -65,6 +71,18 @@
                                 <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</a>
                                 <a class="btn btn-outline-info" asp-controller="Book" asp-action="Details" asp-route-id="@item.Id" ><i class="bi bi-pencil-eye"></i>Details</a>
                                 <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
+                                @{
+                                    
+                                    string authToken = Context.Request.Cookies["AuthCookie"];
+                                    //parasa asta nu vrea sa lucreze => if (User.Identity.IsAuthenticated)
+                                    // Verificați dacă tokenul este prezent și valabil
+                                    if (!string.IsNullOrEmpty(authToken))
+                                        {
+                                        <a class="btn btn-primary btn-lg">
+                                            <i class="bi bi-cart-fill me-2">ShopingCart</i>
+                                        </a>
+                                        }
+                                   }
                             </td>
                         </tr>
                     }

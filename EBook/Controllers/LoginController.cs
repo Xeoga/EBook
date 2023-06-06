@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Http;
 using EBook.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using EBook.BussinesLogic.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using EBook.Domain.Entities.User;
+using System.Threading.Tasks;
 
 namespace EBook.Controllers
 {
@@ -13,9 +17,23 @@ namespace EBook.Controllers
         {
             _service = service;
         }
+        public IActionResult Logout()
+        {
+            // Ștergeți cookie-ul de autentificare
+            Response.Cookies.Delete("AuthCookie");
+
+            // Alte acțiuni necesare pentru deconectare (de exemplu, ștergerea sesiunii sau alte operațiuni personalizate)
+
+            return RedirectToAction("Index", "Home");
+        }
         [HttpGet]
         public IActionResult LogIn()
         {
+            string name = Request.Cookies["AuthCookie"];
+            ViewBag.name = name;
+            ViewData["Username"] = name;
+            // sau
+            ViewBag.name = name;
             return View();
         }
 
@@ -28,6 +46,7 @@ namespace EBook.Controllers
                     // Autentificare reușită
                     // Setarea unui cookie pentru a reține autentificarea
                     // Creează un token de autentificare unic pentru utilizator
+
                     string authToken = Guid.NewGuid().ToString();
 
                     // Creați opțiunile pentru cookie
