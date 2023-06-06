@@ -33,8 +33,17 @@
                         <div class="form-group" style="display: flex; justify-content: flex-end;">
                             <a class="btn btn-outline-success" asp-controller="Login" asp-action="LogIn">Login</a>
                         </div>
-
-                        
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <a>True</a>
+                            }
+                            else
+                            {
+                                // Afișați un mesaj de eroare sau un mesaj de încurajare pentru autentificare
+                                <a>True</a>
+                            }
+                        }
                     </ul>
                 </div>
             </div>

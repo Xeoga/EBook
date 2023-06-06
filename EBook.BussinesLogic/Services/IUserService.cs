@@ -14,5 +14,7 @@ namespace EBook.BussinesLogic.Services
         Task<ULoginData> GetById(int id);
 
         Task<IEnumerable<ULoginData>> GetAll();
+
+        Task<ULoginData> Authenticate(string credential, string password);
     }
 }

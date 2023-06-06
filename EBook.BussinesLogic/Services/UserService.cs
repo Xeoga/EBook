@@ -1,5 +1,6 @@
 ﻿using EBook.Domain;
 using EBook.Domain.Entities.User;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,22 @@ namespace EBook.BussinesLogic.Services
         {
             throw new NotImplementedException();
         }
+        public async Task<ULoginData> Authenticate(string credential, string password)
+        {
+            var user = await _context.User.FirstOrDefaultAsync(u => u.Credential == credential);
+            if (user != null)
+            {
+                var hashedPassword = HashPassword(password);
+                if (hashedPassword == user.Password)
+                {
+                    // Parola este corectă
+                    return user;
+                }
+            }
+            // Autentificare eșuată
+            return null;
+        }
+
         private string HashPassword(string password)
         {
             SHA256 hash = SHA256.Create();
@@ -48,6 +65,7 @@ namespace EBook.BussinesLogic.Services
 
             return Convert.ToHexString(hashedPassword);
         }
+
 
     }
 
