@@ -11,10 +11,22 @@
 </head>
 
 <body>
+    <style>
+        .search-bar{
+            position: relative;
+            left: 13cm;
+        }
+        .title{
+            position: relative;
+            left: 3.5cm;
+        }
+    </style>
+
     <form asp-controller="Home" asp-action="Index">
         <p>
-            Title: <input type="text" name="SearchString"/>
-
+            <div class="search-bar">
+                <div class="title">Title:</div> <input type="text" name="SearchString" style="width : 300px"/>
+            </div>
         </p>
     </form>
     <div class="row">
