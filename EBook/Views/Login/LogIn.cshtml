@@ -13,7 +13,7 @@
         <link href="~/assets/css/loginStyle.css" rel="stylesheet"/>
 </head>
 
-<body>
+<body style="background-color: white;">
     <style>
         .centered-title{
             position: relative;
@@ -37,22 +37,33 @@
             width: 320px;
             margin-bottom: 10px;
         }
-        .sign-up{
+        .sign-up-link{
             display: flex;
             justify-content: center;
             align-items: end;
             height: 30px;
             position:relative;
-            left:22px;
-            top:-20px
+            left:100px;
+            top:20px
         }
-        .sign-up a{
+        .sign-up-link a{
+            position: relative;
+            top: 150px;
             margin-left: 5px;
         }
         
         .submit-button{
+            background-color:#ffa500;
+            color: #ffa500;
             position: relative;
-            top: -20px;
+            top: 20px;
+            left: 10px;
+        }
+
+        .not-have-account{
+            position: relative;
+            left: 14cm;
+            top: -4px;
         }
     </style>
 
@@ -74,8 +85,9 @@
         </form>
     </div>
 
-    <div class="sign-up">
-        Not have an account? <a asp-area="" asp-controller="Login" asp-action="SingUp">Sign Up Here</a>
+    <div>
+        <a asp-area="" asp-controller="Login" asp-action="SingUp" class="sign-up-link">Sign Up Here</a>
+        <span class="not-have-account">Not have an account?</span>
     </div>
     </body>
 </html>

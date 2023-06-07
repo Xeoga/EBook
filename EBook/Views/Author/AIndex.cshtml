@@ -9,12 +9,51 @@
         display: flex;
         justify-content: center;
     }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar-title {
+        text-align: center;
+        position: relative;
+        top: 10px;
+    }
+
+    .search-form {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-input {
+        width: 500px;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+    }
+
+    .search-form button {
+        margin-left: 10px;
+        padding: 10px;
+        background-color: #ffa500;
+        border: none;
+        border-radius: 10px;
+    }
     
 </style>
 
-<div class="author">
-    <h1>Author List</h1>
-    </div>
+<div class="sidebar">
+    <h3 class="sidebar-title" >Search</h3>
+    <div class="sidebar-item search-form">
+        <form asp-controller="Home" asp-action="Index">
+            <input type="text" name="SearchString" class="search-input">
+            <button type="submit"><i class="bi bi-search"></i></button>
+        </form>
+    </div><!-- End sidebar search formn-->
+</div><!-- End sidebar -->
 
 <div class="row">
     <div class="col-md-8 offset-md-2">
@@ -44,7 +83,7 @@
                             <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</a>
                             <a class="btn btn-outline-info" asp-controller="Author" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-pencil-eye"></i>Details</a>
                             <a class="btn btn-danger" asp-controller="Author" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
-                </td>
+                    </td>
                     </tr>
                 }
             </tbody>
