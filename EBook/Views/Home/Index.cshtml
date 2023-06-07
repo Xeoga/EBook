@@ -96,7 +96,7 @@
                                 <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
                                 @{
                                     
-                                    string authToken = Context.Request.Cookies["AuthCookie"];
+                                    string authToken = Context.Request.Cookies["AuthToken"];
                                     //parasa asta nu vrea sa lucreze => if (User.Identity.IsAuthenticated)
                                     // Verificați dacă tokenul este prezent și valabil
                                     if (!string.IsNullOrEmpty(authToken))

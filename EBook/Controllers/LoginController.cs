@@ -20,7 +20,7 @@ namespace EBook.Controllers
         public IActionResult Logout()
         {
             // Ștergeți cookie-ul de autentificare
-            Response.Cookies.Delete("AuthCookie");
+            Response.Cookies.Delete("AuthToken");
 
             // Alte acțiuni necesare pentru deconectare (de exemplu, ștergerea sesiunii sau alte operațiuni personalizate)
 
@@ -29,11 +29,6 @@ namespace EBook.Controllers
         [HttpGet]
         public IActionResult LogIn()
         {
-            string name = Request.Cookies["AuthCookie"];
-            ViewBag.name = name;
-            ViewData["Username"] = name;
-            // sau
-            ViewBag.name = name;
             return View();
         }
 
@@ -43,23 +38,14 @@ namespace EBook.Controllers
                 var user = await _service.Authenticate(model.Credential, model.Password);
                 if (user != null)
                 {
-                    // Autentificare reușită
-                    // Setarea unui cookie pentru a reține autentificarea
-                    // Creează un token de autentificare unic pentru utilizator
+                // Autentificare reușită
+                // Setarea unui cookie pentru a reține autentificarea
+                // Creează un token de autentificare unic pentru utilizator
+                var token = _service.GenerateToken(user);
 
-                    string authToken = Guid.NewGuid().ToString();
-
-                    // Creați opțiunile pentru cookie
-                    var cookieOptions = new CookieOptions
-                    {
-                        // Setează data de expirare a cookie-ului (ex: 30 de zile)
-                        Expires = DateTime.Now.AddDays(30),
-                        // Asigură că cookie-ul este accesibil doar prin HTTP și nu prin JavaScript
-                        HttpOnly = true
-                    };
 
                     // Setează cookie-ul cu tokenul de autentificare
-                    Response.Cookies.Append("AuthCookie", authToken, cookieOptions);
+                    Response.Cookies.Append("AuthToken", token, new CookieOptions { HttpOnly = true, Secure = true });
 
                     // Puteți stoca informații suplimentare despre utilizator în cookie, dacă este necesar
                     // Exemplu: Response.Cookies.Append("UserId", user.Id.ToString(), cookieOptions);

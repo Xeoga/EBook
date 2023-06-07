@@ -1,17 +1,19 @@
 ﻿using EBook.Domain;
 using EBook.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+
 
 namespace EBook.BussinesLogic.Services
 {
     public class UserService : IUserService
     {
+        private const string TokenSecret = "asflags;lasdTestKey";
+        private static readonly TimeSpan TokenLifeTime = TimeSpan.FromHours(1);
         private readonly EBookAppContext _context;
         public UserService(EBookAppContext context)
         {
@@ -56,6 +58,39 @@ namespace EBook.BussinesLogic.Services
             // Autentificare eșuată
             return null;
         }
+
+        public string GenerateToken(ULoginData request)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(TokenSecret);
+
+            var claims = new List<Claim>
+            {
+                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new(JwtRegisteredClaimNames.Sub, request.LoginIp),
+                new(JwtRegisteredClaimNames.Email, request.Credential),
+                new("userId", request.Id.ToString()),
+                new("Role", request.Level.ToString())
+            };
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.Add(TokenLifeTime),
+                Issuer = "",
+                Audience = "",
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256),
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var jwt = tokenHandler.WriteToken(token);
+            return jwt;
+        }
+        public async Task<ULoginData> CheckEmail(string email)
+        {
+            return await _context.User.FirstOrDefaultAsync(u => u.Credential == email);
+        }
+
 
         private string HashPassword(string password)
         {

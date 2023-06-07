@@ -16,5 +16,7 @@ namespace EBook.BussinesLogic.Services
         Task<IEnumerable<ULoginData>> GetAll();
 
         Task<ULoginData> Authenticate(string credential, string password);
+        string GenerateToken(ULoginData request);
+        Task<ULoginData> CheckEmail(string email);
     }
 }

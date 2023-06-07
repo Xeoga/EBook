@@ -71,22 +71,25 @@
                 </ul>
                 <div>
                     @{
-                        var userName = Context.User.Identity.Name;
-                        string authToken = Context.Request.Cookies["AuthCookie"];
-                        string username = Context.Request.Cookies["AuthCookie"];
-                        // Obțineți valoarea cookie-ului "AuthCookie" (tokenul de autentificare)
+                        string authToken = Context.Request.Cookies["AuthToken"];
+                        // Obțineți valoarea cookie-ului "AuthToken" (tokenul de autentificare)
                         //parasa asta nu vrea sa lucreze => if (User.Identity.IsAuthenticated)
                         // Verificați dacă tokenul este prezent și valabil
                         if (!string.IsNullOrEmpty(authToken))
                         {
                             // Afișați conținutul pentru utilizatorul autentificat
                             //Nu lucreaza nu  pot pune username HZ cum
-                            <span class="d-inline-block">Bun venit, @ViewBag.name!   </span>
-                //<span>Bun venit, @ViewData["name"]!</span>
+                            <span class="d-inline-block">Bun venit, @ViewBag.name!</span>
                             <a class="btn btn-primary d-inline-block" asp-controller="Cart" asp-action="Index">
                                 <i class="bi bi-cart-fill me-2 d-inline-block"></i>ShopingCart
                             </a>
-                            <a class="btn btn-outline-success d-inline-block" asp-controller="Login" asp-action="Logout">Logout</a>
+
+                            <form asp-controller="Login" asp-action="Logout" class="d-inline-block">
+                                <button class="btn btn-outline-danger my-2 my-sm-0 d-inline-block">
+                                    <i class="bi bi-box-arrow-in-right d-inline-block"></i> Log out
+                                </button>
+                            </form>
+
 
                         }
                         else
