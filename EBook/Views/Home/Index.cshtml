@@ -7,34 +7,57 @@
 <html lang="en">
 
 <head>
-
+    <link href="~/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 </head>
 
 <body>
     <style>
-        .search-bar{
-            position: relative;
-            left: 13cm;
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .title{
-            position: relative;
-            left: 3.5cm;
+
+        .sidebar-title {
+            text-align: center;
         }
-        .search-input{
+
+        .search-form {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
             width: 500px;
             padding: 5px;
             border-radius: 10px;
             border: 1px solid #ccc;
         }
+
+        .search-form button {
+            margin-left: 10px;
+            padding: 10px;
+            background-color: #ffa500;
+            border: none;
+            border-radius: 10px;
+        }
     </style>
 
-    <form asp-controller="Home" asp-action="Index">
-        <p>
-            <div class="search-bar">
-                <div class="title">Title</div> <input type="text" name="SearchString" class="search-input" />
-            </div>
-        </p>
-    </form>
+    <div class="sidebar">
+        <h3 class="sidebar-title">Search</h3>
+        <div class="sidebar-item search-form">
+            <form asp-controller="Home" asp-action="Index">
+                <input type="text" name="SearchString" class="search-input">
+                <button type="submit"><i class="bi bi-search"></i></button>
+            </form>
+        </div><!-- End sidebar search formn-->
+    </div><!-- End sidebar -->
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <table class="table">
@@ -78,7 +101,7 @@
                                     // Verificați dacă tokenul este prezent și valabil
                                     if (!string.IsNullOrEmpty(authToken))
                                         {
-                                        <a class="btn btn-primary btn-lg">
+                                        <a class="btn btn-primary">
                                             <i class="bi bi-cart-fill me-2">ShopingCart</i>
                                         </a>
                                         }

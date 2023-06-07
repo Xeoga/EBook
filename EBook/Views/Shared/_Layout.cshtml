@@ -12,61 +12,95 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EBook.styles.css" asp-append-version="true" />
 
+
+    <!-- Favicons -->
+    <link href="~/assets/img/favicon.png" rel="icon">
+    <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EBook</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Author" asp-action="AIndex">Authors</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Categorie" asp-action="CIndex">Categorie</a>
-                        </li>
-                        <div class="right-sidebar">
-                        @{
-                            // Obțineți valoarea cookie-ului "AuthCookie" (tokenul de autentificare)
-                            var userName = Context.User.Identity.Name;
-                            string authToken = Context.Request.Cookies["AuthCookie"];
-                            string username = Context.Request.Cookies["AuthCookie"];
+    <section id="topbar" class="d-flex align-items-center">
+        <div class="container d-flex justify-content-center justify-content-md-between">
+            <div class="contact-info d-flex align-items-center">
+                <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">E_Book@gmail.com</a></i>
+                <i class="bi bi-phone d-flex align-items-center ms-4"><span>+373 078000001</span></i>
+            </div>
+            <div class="social-links d-none d-md-flex align-items-center">
+                <a href="http://www.twitter.com" class="twitter"><i class="bi bi-twitter" target="_blank"></i></a>
+                <a href="https://www.facebook.com" class="facebook"><i class="bi bi-facebook" target="_blank"></i></a>
+                <a href="https://www.instagram.com" class="instagram"><i class="bi bi-instagram" target="_blank"></i></a>
+                <a href="https://www.linkedin.com" class="linkedin"><i class="bi bi-linkedin" target="_blank"></i></i></a>
+            </div>
+        </div>
+    </section>
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex justify-content-between align-items-center">
 
-                            //parasa asta nu vrea sa lucreze => if (User.Identity.IsAuthenticated)
-                            // Verificați dacă tokenul este prezent și valabil
-                            if (!string.IsNullOrEmpty(authToken))
-                            {
+            <div class="logo">
+                <h1><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">EBook</a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+            <!-- navbar -->
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Author" asp-action="AIndex">Authors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Categorie" asp-action="CIndex">Categorie</a>
+                    </li>
+                </ul>
+                <div>
+                    @{
+                        var userName = Context.User.Identity.Name;
+                        string authToken = Context.Request.Cookies["AuthCookie"];
+                        string username = Context.Request.Cookies["AuthCookie"];
+                        // Obțineți valoarea cookie-ului "AuthCookie" (tokenul de autentificare)
+                        //parasa asta nu vrea sa lucreze => if (User.Identity.IsAuthenticated)
+                        // Verificați dacă tokenul este prezent și valabil
+                        if (!string.IsNullOrEmpty(authToken))
+                        {
                             // Afișați conținutul pentru utilizatorul autentificat
                             //Nu lucreaza nu  pot pune username HZ cum
-                                    <span>Bun venit, @ViewBag.name!</span>
-                                    //<span>Bun venit, @ViewData["name"]!</span>
-                                <a class="btn btn-primary" asp-controller="Cart" asp-action="Index">
-                                    <i class="bi bi-cart-fill me-2"></i>ShopingCart
-                                </a>
-                                <a class="btn btn-outline-success" asp-controller="Login" asp-action="Logout">Logout</a>
-                                
-                            }
-                            else
-                            {
-                                // Afișați conținutul pentru utilizatorul neautentificat
-                                    <a class="btn btn-outline-success" asp-controller="Login" asp-action="LogIn">Login</a>
-                                    <a class="btn btn-outline-success" asp-controller="Login" asp-action="SingUp">Sign Up</a>
-                            }
+                            <span class="d-inline-block">Bun venit, @ViewBag.name!   </span>
+                //<span>Bun venit, @ViewData["name"]!</span>
+                            <a class="btn btn-primary d-inline-block" asp-controller="Cart" asp-action="Index">
+                                <i class="bi bi-cart-fill me-2 d-inline-block"></i>ShopingCart
+                            </a>
+                            <a class="btn btn-outline-success d-inline-block" asp-controller="Login" asp-action="Logout">Logout</a>
+
                         }
-                        </div>
-                    </ul>
+                        else
+                        {
+                            // Afișați conținutul pentru utilizatorul neautentificat
+                            <a class="btn btn-outline-success d-inline-block" asp-controller="Login" asp-action="LogIn">Login</a>
+                            <a class="btn btn-outline-success d-inline-block" asp-controller="Login" asp-action="SingUp">Sign Up</a>
+                        }
+                    }
                 </div>
-            </div>
-        </nav>
-    </header>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+    </header><!-- End Header -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
