@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EBook.styles.css" asp-append-version="true" />
-
+    <link href="c:\users\adria\desktop\ebook\ebook\views\shared\_layout.cshtml.css" rel="stylesheet" />
 
     <!-- Favicons -->
     <link href="~/assets/img/favicon.png" rel="icon">
@@ -66,7 +66,7 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Author" asp-action="AIndex">Authors</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Categorie" asp-action="CIndex">Categorie</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Categorie" asp-action="CIndex">Categories</a>
                     </li>
                 </ul>
                 <div>
@@ -92,8 +92,10 @@
                         else
                         {
                             // Afișați conținutul pentru utilizatorul neautentificat
-                            <a class="btn btn-outline-success d-inline-block" asp-controller="Login" asp-action="LogIn">Login</a>
-                            <a class="btn btn-outline-success d-inline-block" asp-controller="Login" asp-action="SingUp">Sign Up</a>
+                            <div class="button-container">
+                                <a class="btn btn-outline-success d-inline-block" asp-controller="Login" asp-action="LogIn">Log in</a>
+                                <a class="btn btn-outline-success d-inline-block" asp-controller="Login" asp-action="SingUp">Sign Up</a>
+                            </div>
                         }
                     }
                 </div>
@@ -118,10 +120,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-<style>
-    .right-sidebar {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-</style>
