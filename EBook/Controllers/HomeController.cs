@@ -55,12 +55,6 @@ namespace EBook.Controllers
             return View();
         }
 
-        //public IActionResult Login()
-        //{
-            // In felul dat primim numele la admin
-            //var adminName = Configuration.GetSection("Admin:Name");
-            //return View();
-        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

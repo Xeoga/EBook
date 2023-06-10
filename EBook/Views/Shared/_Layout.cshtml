@@ -1,6 +1,13 @@
 ﻿
 @using Microsoft.AspNetCore.Identity
+@using System.IdentityModel.Tokens.Jwt;
 
+<style>
+    .d-inline-block {
+        margin-right: 10px; /* Ajustați dimensiunea marginii la dreapta */
+        margin-left: 10px; /* Ajustați dimensiunea marginii la stânga */
+    }
+</style>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -77,9 +84,14 @@
                         // Verificați dacă tokenul este prezent și valabil
                         if (!string.IsNullOrEmpty(authToken))
                         {
+                            var tokenHandler = new JwtSecurityTokenHandler();
+                            var token = tokenHandler.ReadJwtToken(authToken);
+                            var usernameClaim = token.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
                             // Afișați conținutul pentru utilizatorul autentificat
                             //Nu lucreaza nu  pot pune username HZ cum
-                            <span class="d-inline-block">Bun venit, @ViewBag.name!</span>
+                            <span class="d-inline-block"></span>
+
+                            <span class="d-inline-block">Welcome, @usernameClaim!</span>
                             <a class="btn btn-primary d-inline-block" asp-controller="Cart" asp-action="Index">
                                 <i class="bi bi-cart-fill me-2 d-inline-block"></i>ShopingCart
                             </a>
@@ -89,6 +101,7 @@
                                     <i class="bi bi-box-arrow-in-right d-inline-block"></i> Log out
                                 </button>
                             </form>
+
 
 
                         }

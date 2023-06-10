@@ -35,6 +35,7 @@ namespace EBook.Domain
         public DbSet<Book> Books { get; set; }
         public DbSet<Categorie> Categories { get; set; }
         public DbSet<Author_Book> Authors_Books { get; set; }
+        public DbSet<Cart> ShoppingCartItems { get; set; }
         //Posibil eroarea
         public DbSet<PublishingHouse> PublishingHouses { get; set; }
 

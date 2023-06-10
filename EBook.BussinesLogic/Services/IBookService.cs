@@ -17,5 +17,6 @@ namespace EBook.BussinesLogic.Services
         Task AddCat(Categorie categorie);
         public List<Author> GetAllAuthors();
         public List<Categorie> GetCategories();
+        Task Update(Book newProduct);
     }
 }

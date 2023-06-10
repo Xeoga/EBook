@@ -85,6 +85,47 @@ namespace EBook.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var productDetails = await _service.GetById(id);
+            List<Author> authors = _service.GetAllAuthors();
+            ViewBag.Authors = authors.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.AuthorBio
+            }).ToList();
+
+            List<Categorie> categorie = _service.GetCategories();
+            ViewBag.Categories = categorie.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.NameCategorie
+            }).ToList();
+
+            var response = new Book()
+            {
+                Id = productDetails.Id,
+                Name = productDetails.Name,
+                URL = productDetails.URL,
+                Descriptions = productDetails.Descriptions,
+                BookCategorie = productDetails.BookCategorie,
+                Price = productDetails.Price,
+            };
+            return View(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Book product)
+        {
+            //if (ModelState.IsValid)
+            //{
+                await _service.Update(product);
+                return RedirectToAction("Index","Home");
+            //}
+            //return View(product);
+        }
+
 
     }
 }

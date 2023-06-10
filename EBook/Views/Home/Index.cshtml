@@ -1,4 +1,5 @@
 ﻿@using EBook.Domain.Entities
+@using System.IdentityModel.Tokens.Jwt;
 @model IEnumerable<Book>
 @{
     ViewData["Title"] = "Home Page";
@@ -7,6 +8,7 @@
 <html lang="en">
 
 <head>
+    <link href="~/assets/css/style.css" rel="stylesheet">
     <link href="~/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
     <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -67,6 +69,7 @@
                     <tr>
                         <th>@Html.DisplayNameFor(model=>model.URL)</th>
                         <th>@Html.DisplayNameFor(model=>model.Name)</th>
+                        <th>@Html.DisplayNameFor(model=>model.Price)</th>
                         <th>@Html.DisplayNameFor(model=>model.Authors)</th>
                         <th>@Html.DisplayNameFor(model=>model.NrPage)</th>
                         <th>@Html.DisplayNameFor(model=>model.Descriptions)</th>
@@ -84,6 +87,9 @@
                                 @Html.DisplayFor(modelItem=>item.Name) 
                             </td>
                             <td class="align-middle">
+                                @Html.DisplayFor(modelItem=>item.Price)
+                            </td>
+                            <td class="align-middle">
                                 @Html.DisplayFor(modelItem=>item.Authors)
                             </td>
                             <td class="align-middle">
@@ -93,17 +99,29 @@
                                 @Html.DisplayFor(modelItem=>item.Descriptions)
                             </td>
                             <td class="align-middle">
-                                <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</a>
-                                <a class="btn btn-outline-info" asp-controller="Book" asp-action="Details" asp-route-id="@item.Id" ><i class="bi bi-pencil-eye"></i>Details</a>
-                                <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
+                                <a class="btn btn-outline-info" asp-controller="Book" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-pencil-eye"></i>Details</a>
+                                @{
+                                    string authToken = Context.Request.Cookies["AuthToken"];
+                                    if (!string.IsNullOrEmpty(authToken))
+                                    {
+                                        var tokenHandler = new JwtSecurityTokenHandler();
+                                        var token = tokenHandler.ReadJwtToken(authToken);
+                                        var role = token.Claims.FirstOrDefault(c => c.Type == "Role")?.Value;
+                                        if (role == "Admin")
+                                        {
+                                            <a class="btn btn-outline-primary" asp-controller="Book" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a>
+                                            <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
+                                        }
+                                    }
+                                }
                                 @{
                                     
-                                    string authToken = Context.Request.Cookies["AuthToken"];
+                                    // authToken = Context.Request.Cookies["AuthToken"];
                                     //parasa asta nu vrea sa lucreze => if (User.Identity.IsAuthenticated)
                                     // Verificați dacă tokenul este prezent și valabil
                                     if (!string.IsNullOrEmpty(authToken))
                                         {
-                                        <a class="btn btn-primary">
+                                        <a class="btn btn-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Id">
                                             <i class="bi bi-cart-fill me-2">ShopingCart</i>
                                         </a>
                                         }
@@ -116,10 +134,23 @@
         </div>
     </div>
 
-    <div style="position: fixed; right: 25px; bottom: 65px;" class="text-white">
-        <a asp-controller="Book" asp-action="Add" class="btn btn-success"> <i class="bi bi-plus-circle"></i> Add Book </a>
-        <a asp-controller="Book" asp-action="AddCategorie" class="btn btn-success"> <i class="bi bi-plus-circle"></i> Add Categorie </a>
-    </div>
+    @{
+        //string authToken = Context.Request.Cookies["AuthToken"];
+        string aToken = Context.Request.Cookies["AuthToken"];
+        if (!string.IsNullOrEmpty(aToken))
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.ReadJwtToken(aToken);
+            var role = token.Claims.FirstOrDefault(c => c.Type == "Role")?.Value;
+            if (role == "Admin")
+            {
+                <div style="position: fixed; right: 25px; bottom: 65px;" class="text-white">
+                    <a asp-controller="Book" asp-action="Add" class="btn btn-success"> <i class="bi bi-plus-circle"></i> Add Book </a>
+                    <a asp-controller="Book" asp-action="AddCategorie" class="btn btn-success"> <i class="bi bi-plus-circle"></i> Add Categorie </a>
+                </div>
+            }
+        }
+    }
 </body>
 
 </html>

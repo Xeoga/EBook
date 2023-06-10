@@ -39,6 +39,7 @@ builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IPublishingHouse, PublishingHouseService>();
 builder.Services.AddScoped<ICategorieService, CategorieService>();
+builder.Services.AddScoped<ICartService, CartService>();
 
 //DB
 var connectionString = builder.Configuration.GetConnectionString("DbConnection");

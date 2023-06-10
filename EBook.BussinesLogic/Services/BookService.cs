@@ -69,10 +69,28 @@ namespace EBook.BussinesLogic.Services
         {
             return _context.Categories.ToList();
         }
+        public async Task Update(Book newProduct)
+        {
+            var product = await _context.Books.FindAsync(newProduct.Id);
 
-        //public async Task GetCategorie(int id)
-        //{
-        //return await _context.Categories.FirstOrDefaultAsync(id);
-        //}
+            if (product != null)
+            {
+                product.Id = product.Id;
+                product.Name = newProduct.Name;
+                product.URL = newProduct.URL;
+                product.Descriptions = newProduct.Descriptions;
+                product.NrPage = newProduct.NrPage;
+                product.Price = newProduct.Price;
+                product.DatePublishing = DateTime.Now;
+                product.BookCategorie = newProduct.BookCategorie;
+                product.AuthorId = newProduct.AuthorId;
+                await _context.SaveChangesAsync();
+            }
+
+            //remove Product_Menues
+            //var existingConnect = _context.Books.Where(m => m.Id == newProduct.Id).ToList();
+            //_context.Books.RemoveRange(existingConnect);
+            //await _context.SaveChangesAsync();
+        }
     }
 }
